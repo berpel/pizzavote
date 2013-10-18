@@ -103,76 +103,57 @@ a img {
  * Store the main color and
  * background color as variables
  */
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
 body {
   font-family: 'Georgia';
   background-color: #faf9f0;
   color: #444;
 }
-header {
-  font-family: 'Quicksand';
-  padding: 50px 10px;
-  color: #fff;
-  font-size: 25px;
+article,
+section {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+article .center,
+section .center {
+  display: table-cell;
   text-align: center;
-/*
-   * Note the use of the `main-color`
-   * variable and the `darken` function
-   */
-  background-color: #fa5b4d;
-  border-bottom: 1px solid #df1806;
-  text-shadow: 0px -1px 0px #df1806;
+  vertical-align: middle;
 }
-.container {
-  width: 500px;
-  margin: 50px auto;
-  overflow: hidden;
+button {
+  background-color: #ef3a4e;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(0,0,0,0)), color-stop(1, rgba(0,0,0,0.15)));
+  background-image: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.15) 100%);
+  background-image: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.15) 100%);
+  background-image: -o-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.15) 100%);
+  background-image: -ms-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.15) 100%);
+  background-image: linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.15) 100%);
+  border: none;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 32px;
+  outline: none;
+  padding: 16px;
+  text-shadow: -1px -1px 1px rgba(0,0,0,0.5);
 }
-.main-content {
-  float: left;
-  width: 300px;
+button.small {
+  font-size: 16px;
+  padding: 8px;
 }
-.main-content p {
-  margin-bottom: 20px;
-}
-.sidebar {
-  float: left;
-  width: 200px;
-}
-.sidebar .widget {
-/*
-     * Note the lack of vendor
-     * prefixes here. Nib will
-     * add them for us
-     */
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-  border: 1px solid #ccc;
-  margin-left: 20px;
-  background-color: #faf9f0;
-  -webkit-box-shadow: inset 0px 0px 0px 3px rgba(255,255,255,0.8), 0px 3px 0px -2px rgba(0,0,0,0.1);
-  box-shadow: inset 0px 0px 0px 3px rgba(255,255,255,0.8), 0px 3px 0px -2px rgba(0,0,0,0.1);
-}
-.sidebar .widget h1 {
-  font-family: 'Quicksand';
-  margin: 13px 10px 4px;
-  padding-bottom: 10px;
-  border-bottom: 1px dotted #ddd;
-  -webkit-border-radius: 2px 2px 0px 0px;
-  border-radius: 2px 2px 0px 0px;
-  margin-bottom: 10px;
-}
-.sidebar .widget p {
-  font-size: 13px;
-  padding: 0px 10px;
-  margin-bottom: 10px;
-}
-p {
-  line-height: 1.8;
-}
-footer {
-  width: 500px;
-  margin: 50px auto;
-  border-top: 1px dotted #ccc;
-  padding-top: 5px;
-  font-size: 13px;
+input[type=text] {
+  border: 1px solid #ef3a4e;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 0 1px rgba(0,0,0,0.5) inset;
+  box-shadow: 0 0 1px rgba(0,0,0,0.5) inset;
+  font-size: 32px;
+  padding: 8px;
+  outline: none;
+  width: 400px;
 }

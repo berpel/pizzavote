@@ -1,27 +1,29 @@
 extend layout
 
 block content
-  p
-    | Vivamus hendrerit arcu sed erat molestie
-    | vehicula. Sed auctor neque eu tellus
-    | rhoncus ut eleifend nibh porttitor. Ut in.
-    
-  p
-    | Donec congue lacinia dui, a porttitor
-    | lectus condimentum laoreet. Nunc eu
-    | ullamcorper orci. Quisque eget odio ac
-    | lectus vestibulum faucibus eget in metus.
-    | In pellentesque faucibus vestibulum. Nulla
-    | at nulla justo, eget luctus tortor.
+  section(name='generate')
+    .center
+      p Click to create your very own pizza vote!
+      button(data-target='share') Create Pizza Vote
 
-block sidebar
-  .widget
-    h1 Widget
-    p
-      | Sed auctor neque eu tellus rhoncus ut
-      | eleifend nibh porttitor. Ut in nulla enim.
-    
-    p
-      | Vivamus hendrerit arcu sed erat molestie
-      | vehicula.
+  section(name='share')
+    .center
+      p Send this link to whomever is eating pizza.
+      input#display-key(type='text')
+      .btns
+        button.small(data-target='vote') Vote
+        button.small(data-target='results') Results
 
+  section(name='vote')
+    .center
+      - each topping in toppings
+        div
+          label
+            input(type='checkbox', name=topping.name, value=1)
+            span=topping.name
+      .btns
+        button(data-target='results') Submit
+
+  section(name='results')
+    .center
+      div results go here
