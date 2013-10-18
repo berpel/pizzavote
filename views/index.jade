@@ -6,7 +6,7 @@ block create
       p Click to create your very own pizza vote!
       button(data-target='share') Create Pizza Vote
 
-  section(name='share')
+  section(name='share').hidden
     .center
       p Send this link to whomever is eating pizza.
       input#display-key(type='text')
@@ -15,7 +15,7 @@ block create
         button.small(data-target='results') Results
 
 block vote
-  section(name='vote')
+  section(name='vote').hidden
     .center
       - each topping in toppings
         div
@@ -25,6 +25,6 @@ block vote
       .btns
         button(data-target='results') Submit
 
-  section(name='results')
+  section(name='results').hidden
     .center
       div results go here

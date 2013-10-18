@@ -1,6 +1,8 @@
 function goto(target) {
+  $this = $('[name='+target+']');
+  $this.show();
   $('html,body').animate({
-    scrollTop: $('[name='+target+']').offset().top
+    scrollTop: $this.offset().top
   }, 1000);
 }
 

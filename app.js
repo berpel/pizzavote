@@ -84,9 +84,10 @@ app.get('/generate', function(req, res) {
 
 app.get('/:key', function(req, res) {
   var query = Votes.findOne({'key': req.params.id});
+  console.log(query);
   Toppings.find(function(err, toppings) {
     res.render('vote',
-    { title : 'Home',
+    { title : 'Create',
       toppings : toppings }
     )
   });
