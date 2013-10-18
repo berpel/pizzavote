@@ -30,7 +30,9 @@ app.use(stylus.middleware(
 app.use(express.static(__dirname + '/public'))
 
 var Toppings = require("./models/toppings")
+var Votes = require("./models/votes")
 
+// don't know how to migrate shit
 Toppings.remove(function(err, p){
     if(err){ 
         throw err;
@@ -39,6 +41,8 @@ Toppings.remove(function(err, p){
     }
 });
 
+
+// insert some data
 new Toppings({
     name: 'Pepperoni',
     type: 'meat'
@@ -54,6 +58,7 @@ new Toppings({
     type: 'meat'
   }).save();
 
+// routes
 app.get('/', function(req, res) {
   Toppings.find(function(err, toppings) {
     console.log(toppings);
@@ -69,7 +74,22 @@ app.post('/', function(req, res) {
 })
 
 app.get('/generate', function(req, res) {
-  res.send(randomstring.generate(7));
+  var key = randomstring.generate(7)
+  new Votes({
+    key: key
+  });
+  console.log(key);
+  res.send(key);
+});
+
+app.get('/:key', function(req, res) {
+  var query = Votes.findOne({'key': req.params.id});
+  Toppings.find(function(err, toppings) {
+    res.render('vote',
+    { title : 'Home',
+      toppings : toppings }
+    )
+  });
 });
 
 app.listen(3000)

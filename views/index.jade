@@ -1,6 +1,6 @@
 extend layout
 
-block content
+block create
   section(name='generate')
     .center
       p Click to create your very own pizza vote!
@@ -14,6 +14,7 @@ block content
         button.small(data-target='vote') Vote
         button.small(data-target='results') Results
 
+block vote
   section(name='vote')
     .center
       - each topping in toppings

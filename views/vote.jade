@@ -1,0 +1,18 @@
+extend layout
+
+block create
+
+block vote
+  section(name='vote')
+    .center
+      - each topping in toppings
+        div
+          label
+            input(type='checkbox', name=topping.name, value=1)
+            span=topping.name
+      .btns
+        button(data-target='results') Submit
+
+  section(name='results')
+    .center
+      div results go here
