@@ -17,17 +17,41 @@ global-reset()
  * Store the main color and
  * background color as variables
  */
+
+/*
+<li title="#D9B36C" style="background: #D9B36C"></li>
+<li title="#D9CAAD" style="background: #D9CAAD"></li>
+<li title="#735645" style="background: #735645"></li>
+<li title="#BF3604" style="background: #BF3604"></li>
+<li title="#8C3027" style="background: #8C3027"></li></ul>
+*/
 main-color = #fa5b4d
-background-color = #faf9f0
+background-color = #D9CAAD
+red = #BF3604
+step-color = #735645
 
 html, body
   height 100%
   width 100%
 
 body
-  font-family 'Georgia'
+  font-family 'helvetica'
   background-color background-color
   color #444
+
+.step
+  background step-color
+  border-radius 8px
+  color background-color
+  font-size 32px
+  height 50px
+  left 20px
+  line-height 50px
+  position fixed
+  text-align center
+  text-shadow -1px -1px 1px rgba(0,0,0,.5)
+  top 20px
+  width 50px
 
 article
 
@@ -39,16 +63,21 @@ section
     display table-cell
     text-align center
     vertical-align middle
+    .wrap
+      display inline-block
+      text-align left
+      width: 600px
 
 .hidden
   display none
 
 button
-  background-color #EF3A4E
+  background-color red
   background-image linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,.15))
   border none
   border-radius 8px
   color #fff
+  font-family 'helvetica'
   font-size 32px
   outline none
   padding 16px
@@ -58,8 +87,16 @@ button
     font-size 16px
     padding 8px
 
+.toppings
+  clearfix()
+  ul.list
+    float left
+    width 200px
+    li
+      padding 5px
+
 input[type=text]
-  border 1px solid #EF3A4E
+  border 1px solid red
   border-radius 8px
   box-shadow 0 0 1px rgba(0,0,0,.5) inset
   font-size 32px

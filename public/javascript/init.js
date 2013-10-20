@@ -3,7 +3,7 @@ function goto(target) {
   $this.show();
   $('html,body').animate({
     scrollTop: $this.offset().top
-  }, 1000);
+  }, 500);
 }
 
 $(function(){

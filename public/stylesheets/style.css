@@ -103,15 +103,38 @@ a img {
  * Store the main color and
  * background color as variables
  */
+/*
+<li title="#D9B36C" style="background: #D9B36C"></li>
+<li title="#D9CAAD" style="background: #D9CAAD"></li>
+<li title="#735645" style="background: #735645"></li>
+<li title="#BF3604" style="background: #BF3604"></li>
+<li title="#8C3027" style="background: #8C3027"></li></ul>
+*/
 html,
 body {
   height: 100%;
   width: 100%;
 }
 body {
-  font-family: 'Georgia';
-  background-color: #faf9f0;
+  font-family: 'helvetica';
+  background-color: #d9caad;
   color: #444;
+}
+.step {
+  background: #735645;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  color: #d9caad;
+  font-family: 'Quicksand';
+  font-size: 32px;
+  height: 50px;
+  left: 20px;
+  line-height: 50px;
+  position: fixed;
+  text-align: center;
+  text-shadow: -1px -1px 1px rgba(0,0,0,0.5);
+  top: 20px;
+  width: 50px;
 }
 article,
 section {
@@ -125,11 +148,17 @@ section .center {
   text-align: center;
   vertical-align: middle;
 }
+article .center .wrap,
+section .center .wrap {
+  display: inline-block;
+  text-align: left;
+  width: 600px;
+}
 .hidden {
   display: none;
 }
 button {
-  background-color: #ef3a4e;
+  background-color: #bf3604;
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(0,0,0,0)), color-stop(1, rgba(0,0,0,0.15)));
   background-image: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.15) 100%);
   background-image: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.15) 100%);
@@ -140,6 +169,7 @@ button {
   -webkit-border-radius: 8px;
   border-radius: 8px;
   color: #fff;
+  font-family: 'helvetica';
   font-size: 32px;
   outline: none;
   padding: 16px;
@@ -151,8 +181,26 @@ button.small {
   font-size: 16px;
   padding: 8px;
 }
+.toppings {
+  zoom: 1;
+}
+.toppings:before,
+.toppings:after {
+  content: "";
+  display: table;
+}
+.toppings:after {
+  clear: both;
+}
+.toppings ul.list {
+  float: left;
+  width: 200px;
+}
+.toppings ul.list li {
+  padding: 5px;
+}
 input[type=text] {
-  border: 1px solid #ef3a4e;
+  border: 1px solid #bf3604;
   -webkit-border-radius: 8px;
   border-radius: 8px;
   -webkit-box-shadow: 0 0 1px rgba(0,0,0,0.5) inset;

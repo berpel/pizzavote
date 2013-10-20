@@ -2,12 +2,12 @@ extend layout
 
 block create
   section(name='generate')
-    .center
+    .center: .wrap
       p Click to create your very own pizza vote!
       button(data-target='share') Create Pizza Vote
 
   section(name='share').hidden
-    .center
+    .center: .wrap
       p Send this link to whomever is eating pizza.
       input#display-key(type='text')
       .btns
@@ -15,16 +15,42 @@ block create
         button.small(data-target='results') Results
 
 block vote
+
+  - var styles = [{name: 'Supreme', type: 'preset'}, {name: 'Meat Lovers', type: 'preset'}, {name: 'Hawiian', type: 'preset'}]
+  - var toppings = [{name: 'Pepperoni', type: 'meat'}, {name: 'Sausage', type: 'meat'}, {name: 'Ham', type: 'meat'}]
+  - var vegetables = [{name: 'Onion', type: 'vegetable'}, {name: 'Black Olives', type: 'vegetable'}, {name: 'Mushrooms', type: 'vegetable'}, {name: 'Green Peppers', type: 'vegetable'}]
+
   section(name='vote').hidden
-    .center
-      - each topping in toppings
-        div
-          label
-            input(type='checkbox', name=topping.name, value=1)
-            span=topping.name
+    .center: .wrap
+      h3 How many slices are you going to eat?
+      select
+        option 1
+        option 2
+        option 3
+        option 4
+      h3 Select your favorite toppings!
+      .toppings
+        ul.list
+          - each style in styles
+            li
+              label
+                input(type='checkbox', name=style.name, value=1)
+                span=style.name
+        ul.list
+          - each topping in toppings
+            li
+              label
+                input(type='checkbox', name=topping.name, value=1)
+                span=topping.name
+        ul.list
+          - each vegetable in vegetables
+            li
+              label
+                input(type='checkbox', name=vegetable.name, value=1)
+                span=vegetable.name
       .btns
         button(data-target='results') Submit
 
   section(name='results').hidden
-    .center
+    .center: .wrap
       div results go here
