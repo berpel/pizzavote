@@ -2,6 +2,7 @@
 html
   head
     title #{title} - Pizza Vote
+    link(rel='stylesheet', href='/stylesheets/font-awesome.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(src='//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js')
     script(src='/javascript/init.js')
@@ -10,4 +11,4 @@ html
       block create
       block vote
 
-    div.step: span 1
+    //-div.step: span: i.icon-arrow-up

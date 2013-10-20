@@ -1,0 +1,53 @@
+mixin votes
+  - var styles = [{name: 'Supreme', type: 'preset'}, {name: 'Meat Lovers', type: 'preset'}, {name: 'Hawiian', type: 'preset'}]
+  - var toppings = [{name: 'Pepperoni', type: 'meat'}, {name: 'Sausage', type: 'meat'}, {name: 'Ham', type: 'meat'}]
+  - var vegetables = [{name: 'Onions', type: 'vegetable'}, {name: 'Black Olives', type: 'vegetable'}, {name: 'Mushrooms', type: 'vegetable'}, {name: 'Green Peppers', type: 'vegetable'}]
+
+  p Congratulations! Someone is ordering you pizza! Please fillout the information below so you get exactly what you want.
+
+  h3 How many slices are you going to eat?
+  .slices
+    label
+      input(type='radio', name='slices', value='1')
+      | 1 slice
+    label
+      input(type='radio', name='slices', value='2')
+      | 2 slices
+    label
+      input(type='radio', name='slices', value='3')
+      | 3 slices
+    label
+      input(type='radio', name='slices', value='4')
+      | 4 slices
+  h3 Select what toppings you like and don't
+  .toppings
+    //-ul.list
+      - each style in styles
+        li
+          label
+            input(type='checkbox', name=style.name, value=1)
+            span=style.name
+    ul.list
+      - each topping in toppings
+        li
+          label
+            input(type='radio', name=topping.name, value=1).yes
+            i.icon-ok
+          label
+            input(type='radio', name=topping.name, value=-1).no
+            i.icon-remove
+          span=topping.name
+    ul.list
+      - each vegetable in vegetables
+        li
+          label
+            input(type='radio', name=vegetable.name, value=1).yes
+            i.icon-ok
+          label
+            input(type='radio', name=vegetable.name, value=-1).no
+            i.icon-remove
+          span=vegetable.name
+  h3 All done?
+  .btns.next
+    i.icon-share-alt.icon-flip-vertical
+    button.small(data-target='results') Submit

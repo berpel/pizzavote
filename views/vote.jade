@@ -1,17 +1,12 @@
 extend layout
+include mixins/sections
 
 block create
 
 block vote
   section(name='vote')
-    .center
-      - each topping in toppings
-        div
-          label
-            input(type='checkbox', name=topping.name, value=1)
-            span=topping.name
-      .btns
-        button(data-target='results') Submit
+    .center: .wrap
+      mixin votes
 
   section(name='results').hidden
     .center

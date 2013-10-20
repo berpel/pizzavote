@@ -2,12 +2,7 @@
  * Import nib
  */
 @import 'nib'
-
-/*
- * Grab a custom font from Google
- */
-@import url('http://fonts.googleapis.com/css?family=Quicksand')
-
+@import 'fonts'
 /*
  * Nib provides a CSS reset
  */
@@ -35,9 +30,11 @@ html, body
   width 100%
 
 body
-  font-family 'helvetica'
   background-color background-color
-  color #444
+  color #735645
+  font-family 'Proxima-Nova'
+  font-size 18px
+  //overflow-y scroll
 
 .step
   background step-color
@@ -54,22 +51,63 @@ body
   width 50px
 
 article
+  height 100%
+  width: 100%
 
 section
-  display table
+  display table !important
   height 100%
   width: 100%
   .center
-    display table-cell
+    display table-cell !important
     text-align center
     vertical-align middle
     .wrap
       display inline-block
       text-align left
-      width: 600px
+      width: 450px
+
+h3
+  font-family 'Proxima-Nova-Bold'
+  margin-bottom 10px
+  text-transform uppercase
+
+p
+  line-height 21px
+  margin-bottom 10px
+
+ul.steps
+  padding-left 32px
+  margin-bottom 10px
+  counter-reset step
+  li
+    padding 10px 0
+    position relative
+    &:before
+      counter-increment step
+      background step-color
+      border-radius 50%
+      color background-color
+      content counter(step)
+      left -32px
+      line-height 28px
+      position absolute
+      text-align center
+      top 5px
+      width 28px
 
 .hidden
   display none
+
+.next
+  margin-bottom 10px
+  i
+    font-size 32px
+
+.slices
+  margin-bottom 10px
+  label
+    margin-right 10px
 
 button
   background-color red
@@ -77,15 +115,15 @@ button
   border none
   border-radius 8px
   color #fff
-  font-family 'helvetica'
+  font-family 'Proxima-Nova'
   font-size 32px
   outline none
   padding 16px
   text-shadow -1px -1px 1px rgba(0,0,0,.5)
   &.small
     border-radius 4px
-    font-size 16px
-    padding 8px
+    font-size 18px
+    padding 4px 8px
 
 .toppings
   clearfix()
@@ -94,12 +132,24 @@ button
     width 200px
     li
       padding 5px
+      i
+        opacity .5
+        margin-right 5px
+      input[type='radio']
+        display none
+        &:checked ~ i
+          opacity 1
+        &.yes:checked ~ i
+          color #565902
+        &.no:checked ~ i
+          color red
 
-input[type=text]
+.url
   border 1px solid red
   border-radius 8px
   box-shadow 0 0 1px rgba(0,0,0,.5) inset
   font-size 32px
+  margin-left 5px
   padding 8px
   outline none
-  width 400px
+  width 350px

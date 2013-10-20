@@ -1,55 +1,42 @@
 extend layout
+include mixins/sections
 
 block create
   section(name='generate')
     .center: .wrap
-      p Click to create your very own pizza vote!
-      button(data-target='share') Create Pizza Vote
+      h3 pizzavote?
+      p Ordering pizza for a group of people? Tired of not knowing how many pizzas to order or what toppings to get? Well, now you can make everyone happy with pizzavote.com
+      h3 Steps
+      ul.steps
+        li Create Vote
+        li Send your vote to people
+        li They will select how many slices they want and what toppings they like and don’t
+        li We calculate all the votes and determine what you should order!
+      h3 Get Started
+      .btns.next
+        i.icon-share-alt.icon-flip-vertical
+        button(data-target='share') Create Pizza Vote
 
   section(name='share').hidden
     .center: .wrap
-      p Send this link to whomever is eating pizza.
-      input#display-key(type='text')
+      h3 Vote Created
+      p Your vote has been created. Now anyone you send this link too can let you know how many slices they plan on eat and the topics they like.
+      h3 Copy &amp; Send
+      .next
+        i.icon-share-alt.icon-flip-vertical
+        input#display-key.url(type='text')
+      h3 next steps
       .btns
+        span Cast your own
         button.small(data-target='vote') Vote
+        span  or view the
         button.small(data-target='results') Results
 
 block vote
 
-  - var styles = [{name: 'Supreme', type: 'preset'}, {name: 'Meat Lovers', type: 'preset'}, {name: 'Hawiian', type: 'preset'}]
-  - var toppings = [{name: 'Pepperoni', type: 'meat'}, {name: 'Sausage', type: 'meat'}, {name: 'Ham', type: 'meat'}]
-  - var vegetables = [{name: 'Onion', type: 'vegetable'}, {name: 'Black Olives', type: 'vegetable'}, {name: 'Mushrooms', type: 'vegetable'}, {name: 'Green Peppers', type: 'vegetable'}]
-
   section(name='vote').hidden
     .center: .wrap
-      h3 How many slices are you going to eat?
-      select
-        option 1
-        option 2
-        option 3
-        option 4
-      h3 Select your favorite toppings!
-      .toppings
-        ul.list
-          - each style in styles
-            li
-              label
-                input(type='checkbox', name=style.name, value=1)
-                span=style.name
-        ul.list
-          - each topping in toppings
-            li
-              label
-                input(type='checkbox', name=topping.name, value=1)
-                span=topping.name
-        ul.list
-          - each vegetable in vegetables
-            li
-              label
-                input(type='checkbox', name=vegetable.name, value=1)
-                span=vegetable.name
-      .btns
-        button(data-target='results') Submit
+      mixin votes
 
   section(name='results').hidden
     .center: .wrap

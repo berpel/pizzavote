@@ -1,6 +1,6 @@
 function goto(target) {
   $this = $('[name='+target+']');
-  $this.show();
+  $this.removeClass('hidden');
   $('html,body').animate({
     scrollTop: $this.offset().top
   }, 500);

@@ -1,10 +1,24 @@
 /*
  * Import nib
  */
-/*
- * Grab a custom font from Google
- */
-@import url("http://fonts.googleapis.com/css?family=Quicksand");
+@font-face {
+  font-family: 'Benguiat';
+  src: url("../fonts/BenguiatGothicStd-Bold.otf");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Proxima-Nova';
+  src: url("../fonts/proximanova-regular-webfont.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Proxima-Nova-Bold';
+  src: url("../fonts/proximanova-bold-webfont.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
 /*
  * Nib provides a CSS reset
  */
@@ -116,16 +130,16 @@ body {
   width: 100%;
 }
 body {
-  font-family: 'helvetica';
   background-color: #d9caad;
-  color: #444;
+  color: #735645;
+  font-family: 'Proxima-Nova';
+  font-size: 18px;
 }
 .step {
   background: #735645;
   -webkit-border-radius: 8px;
   border-radius: 8px;
   color: #d9caad;
-  font-family: 'Quicksand';
   font-size: 32px;
   height: 50px;
   left: 20px;
@@ -136,26 +150,71 @@ body {
   top: 20px;
   width: 50px;
 }
-article,
+article {
+  height: 100%;
+  width: 100%;
+}
 section {
   display: table;
   height: 100%;
   width: 100%;
 }
-article .center,
 section .center {
   display: table-cell;
   text-align: center;
   vertical-align: middle;
 }
-article .center .wrap,
 section .center .wrap {
   display: inline-block;
   text-align: left;
-  width: 600px;
+  width: 450px;
+}
+h3 {
+  font-family: 'Proxima-Nova-Bold';
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+p {
+  line-height: 21px;
+  margin-bottom: 10px;
+}
+ul.steps {
+  padding-left: 32px;
+  margin-bottom: 10px;
+  counter-reset: step;
+}
+ul.steps li {
+  padding: 10px 0;
+  position: relative;
+}
+ul.steps li:before {
+  counter-increment: step;
+  background: #735645;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  color: #d9caad;
+  content: counter(step);
+  left: -32px;
+  line-height: 28px;
+  position: absolute;
+  text-align: center;
+  top: 5px;
+  width: 28px;
 }
 .hidden {
   display: none;
+}
+.next {
+  margin-bottom: 10px;
+}
+.next i {
+  font-size: 32px;
+}
+.slices {
+  margin-bottom: 10px;
+}
+.slices label {
+  margin-right: 10px;
 }
 button {
   background-color: #bf3604;
@@ -169,7 +228,7 @@ button {
   -webkit-border-radius: 8px;
   border-radius: 8px;
   color: #fff;
-  font-family: 'helvetica';
+  font-family: 'Proxima-Nova';
   font-size: 32px;
   outline: none;
   padding: 16px;
@@ -178,8 +237,8 @@ button {
 button.small {
   -webkit-border-radius: 4px;
   border-radius: 4px;
-  font-size: 16px;
-  padding: 8px;
+  font-size: 18px;
+  padding: 4px 8px;
 }
 .toppings {
   zoom: 1;
@@ -199,14 +258,35 @@ button.small {
 .toppings ul.list li {
   padding: 5px;
 }
-input[type=text] {
+.toppings ul.list li i {
+  opacity: 0.5;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  filter: alpha(opacity=50);
+  margin-right: 5px;
+}
+.toppings ul.list li input[type='radio'] {
+  display: none;
+}
+.toppings ul.list li input[type='radio']:checked ~ i {
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+}
+.toppings ul.list li input[type='radio'].yes:checked ~ i {
+  color: #565902;
+}
+.toppings ul.list li input[type='radio'].no:checked ~ i {
+  color: #bf3604;
+}
+.url {
   border: 1px solid #bf3604;
   -webkit-border-radius: 8px;
   border-radius: 8px;
   -webkit-box-shadow: 0 0 1px rgba(0,0,0,0.5) inset;
   box-shadow: 0 0 1px rgba(0,0,0,0.5) inset;
   font-size: 32px;
+  margin-left: 5px;
   padding: 8px;
   outline: none;
-  width: 400px;
+  width: 350px;
 }
