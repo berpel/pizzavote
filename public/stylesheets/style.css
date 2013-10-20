@@ -134,6 +134,7 @@ body {
   color: #735645;
   font-family: 'Proxima-Nova';
   font-size: 18px;
+  overflow-y: scroll;
 }
 .step {
   background: #735645;
@@ -171,7 +172,8 @@ section .center .wrap {
 }
 h3 {
   font-family: 'Proxima-Nova-Bold';
-  margin-bottom: 10px;
+  line-height: 21px;
+  margin-top: 32px;
   text-transform: uppercase;
 }
 p {
@@ -184,7 +186,7 @@ ul.steps {
   counter-reset: step;
 }
 ul.steps li {
-  padding: 10px 0;
+  padding: 10px 5px;
   position: relative;
 }
 ul.steps li:before {
@@ -206,6 +208,9 @@ ul.steps li:before {
 }
 .next {
   margin-bottom: 10px;
+}
+.next * {
+  vertical-align: top;
 }
 .next i {
   font-size: 32px;
@@ -230,6 +235,7 @@ button {
   color: #fff;
   font-family: 'Proxima-Nova';
   font-size: 32px;
+  margin-left: 5px;
   outline: none;
   padding: 16px;
   text-shadow: -1px -1px 1px rgba(0,0,0,0.5);
@@ -239,6 +245,12 @@ button.small {
   border-radius: 4px;
   font-size: 18px;
   padding: 4px 8px;
+}
+button.medium {
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  font-size: 24px;
+  padding: 6px 12px;
 }
 .toppings {
   zoom: 1;
@@ -288,5 +300,5 @@ button.small {
   margin-left: 5px;
   padding: 8px;
   outline: none;
-  width: 350px;
+  width: 370px;
 }
