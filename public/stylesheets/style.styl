@@ -145,12 +145,15 @@ button
         margin-right 5px
       input[type='radio']
         display none
-        &:checked ~ i
-          opacity 1
-        &.yes:checked ~ i
+        &.yes:checked ~ label.yes i
           color #565902
-        &.no:checked ~ i
-          color red
+          opacity 1
+        &.no:checked
+          & ~ label.no i
+            color red
+            opacity 1
+          & ~ span
+            text-decoration line-through
 
 .url
   border 1px solid red

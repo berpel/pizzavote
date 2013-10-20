@@ -30,21 +30,21 @@ mixin votes
     ul.list
       - each topping in toppings
         li
-          label
-            input(type='radio', name=topping.name, value=1).yes
+          input(type='radio', name=topping.name, id=topping.name+'-yes', value=1).yes
+          input(type='radio', name=topping.name, id=topping.name+'-no', value=-1).no
+          label.yes(for=topping.name+'-yes')
             i.icon-ok
-          label
-            input(type='radio', name=topping.name, value=-1).no
+          label.no(for=topping.name+'-no')
             i.icon-remove
           span=topping.name
     ul.list
       - each vegetable in vegetables
         li
-          label
-            input(type='radio', name=vegetable.name, value=1).yes
+          input(type='radio', name=vegetable.name, id=vegetable.name+'-yes', value=1).yes
+          input(type='radio', name=vegetable.name, id=vegetable.name+'-no', value=-1).no
+          label.yes(for=vegetable.name+'-yes')
             i.icon-ok
-          label
-            input(type='radio', name=vegetable.name, value=-1).no
+          label.no(for=vegetable.name+'-no')
             i.icon-remove
           span=vegetable.name
   h3 All done?

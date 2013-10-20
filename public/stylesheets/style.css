@@ -279,16 +279,20 @@ button.medium {
 .toppings ul.list li input[type='radio'] {
   display: none;
 }
-.toppings ul.list li input[type='radio']:checked ~ i {
+.toppings ul.list li input[type='radio'].yes:checked ~ label.yes i {
+  color: #565902;
   opacity: 1;
   -ms-filter: none;
   filter: none;
 }
-.toppings ul.list li input[type='radio'].yes:checked ~ i {
-  color: #565902;
-}
-.toppings ul.list li input[type='radio'].no:checked ~ i {
+.toppings ul.list li input[type='radio'].no:checked ~ label.no i {
   color: #bf3604;
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+}
+.toppings ul.list li input[type='radio'].no:checked ~ span {
+  text-decoration: line-through;
 }
 .url {
   border: 1px solid #bf3604;
