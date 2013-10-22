@@ -21,12 +21,6 @@ mixin votes
       | 4 slices
   h3 Select what toppings you like and don't
   .toppings
-    //-ul.list
-      - each style in styles
-        li
-          label
-            input(type='checkbox', name=style.name, value=1)
-            span=style.name
     ul.list
       - each topping in toppings
         li
@@ -51,3 +45,44 @@ mixin votes
   .btns.next
     i.icon-share-alt.icon-flip-vertical
     button.medium(data-target='results') Submit
+
+mixin results
+  h3 Results
+  ul.totals
+    li
+      div
+        strong 4
+        h4 Voters
+    li
+      div
+        strong 15
+        h4 Slices
+    li
+      div
+        strong=(Math.ceil(15/8))
+        h4 Pizzas
+
+  h3 Toppings
+  .toppings
+    ul.list.results
+      li
+        span.yes +3
+        | Pepperoni
+      li
+        span.yes +2
+        | Sausage
+    ul.list.results
+      li
+        span.no -2
+        | Pepperoni
+
+  h3 We recommend ordering
+  ul.recommend
+    li
+      span.count 1
+      | large pizza with 
+      span.topping pepperoni
+    li 
+      span.count 1
+      | large pizza with 
+      span.topping sausage

@@ -174,6 +174,7 @@ h3 {
   font-family: 'Proxima-Nova-Bold';
   line-height: 21px;
   margin-top: 32px;
+  text-shadow: 1px 1px 1px rgba(255,255,255,0.5);
   text-transform: uppercase;
 }
 p {
@@ -230,6 +231,7 @@ button {
   background-image: -ms-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.15) 100%);
   background-image: linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.15) 100%);
   border: none;
+  border-bottom: 4px solid #8c3027;
   -webkit-border-radius: 8px;
   border-radius: 8px;
   color: #fff;
@@ -252,6 +254,9 @@ button.medium {
   font-size: 24px;
   padding: 6px 12px;
 }
+button:hover {
+  background-image: none;
+}
 .toppings {
   zoom: 1;
 }
@@ -269,6 +274,12 @@ button.medium {
 }
 .toppings ul.list li {
   padding: 5px;
+}
+.toppings ul.list li span.yes {
+  color: #565902;
+}
+.toppings ul.list li span.no {
+  color: #bf3604;
 }
 .toppings ul.list li i {
   opacity: 0.5;
@@ -294,6 +305,29 @@ button.medium {
 .toppings ul.list li input[type='radio'].no:checked ~ span {
   text-decoration: line-through;
 }
+.toppings ul.list.results li {
+  padding-left: 24px;
+  position: relative;
+}
+.toppings ul.list.results li .yes,
+.toppings ul.list.results li .no {
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  color: #d9caad;
+  font-size: 12px;
+  left: 0;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  top: 4px;
+  width: 20px;
+}
+.toppings ul.list.results li .yes {
+  background: #565902;
+}
+.toppings ul.list.results li .no {
+  background: #bf3604;
+}
 .url {
   border: 1px solid #bf3604;
   -webkit-border-radius: 8px;
@@ -305,4 +339,55 @@ button.medium {
   padding: 8px;
   outline: none;
   width: 370px;
+}
+.totals {
+  zoom: 1;
+}
+.totals:before,
+.totals:after {
+  content: "";
+  display: table;
+}
+.totals:after {
+  clear: both;
+}
+.totals li {
+  float: left;
+  width: 33.3333%;
+}
+.totals li div {
+  display: inline-block;
+  text-align: center;
+}
+.totals li strong {
+  font-size: 64px;
+}
+.totals li h4 {
+  font-size: 14px;
+}
+.recommend li {
+  line-height: 20px;
+  padding: 5px;
+  padding-left: 24px;
+  position: relative;
+}
+.recommend li .count {
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background: #735645;
+  color: #d9caad;
+  left: 0;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  top: 5px;
+  width: 20px;
+}
+.recommend li .topping {
+  background: #565902;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  color: #d9caad;
+  display: inline-block;
+  padding: 0 3px;
 }
