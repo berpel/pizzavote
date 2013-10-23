@@ -7,7 +7,7 @@ var express = require('express')
   , nib = require('nib')
   , randomstring = require("randomstring");
 
-var db = mongoose.connect(process.env.MONGO_URL || "mongodb://localhost/pizzavote");
+var db = mongoose.connect(process.env.MONGOLAB_URI || "mongodb://localhost/pizzavote");
 
 mongoose.connection.db.dropDatabase();
 
