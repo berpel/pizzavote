@@ -7,7 +7,7 @@ var express = require('express')
   , nib = require('nib')
   , randomstring = require("randomstring");
 
-var db = mongoose.connect('mongodb://pizzavote:p1zz@v0t3@ds051848.mongolab.com:51848/heroku_app18853683');
+var db = mongoose.connect('mongodb://pizzavote:p1zz6v0t3@ds051848.mongolab.com:51848/heroku_app18853683');
 
 mongoose.connection.db.dropDatabase();
 
