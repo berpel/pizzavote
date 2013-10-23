@@ -1,1 +1,1 @@
-web: node app.js PORT=80
+web: node app.js
