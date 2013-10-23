@@ -5,13 +5,14 @@ var express = require('express')
   , mongoose = require('mongoose')
   , stylus = require('stylus')
   , nib = require('nib')
-  , randomstring = require("randomstring")
+  , randomstring = require("randomstring");
 
-var db = mongoose.connect('mongodb://localhost/pizzavote')
+var db = mongoose.connect('mongodb://localhost/pizzavote');
 
 mongoose.connection.db.dropDatabase();
 
-var app = express()
+var app = express();
+var port = process.env.PORT || 3000;
 
 function compile(str, path) {
   return stylus(str)
@@ -19,18 +20,19 @@ function compile(str, path) {
     .use(nib());
 }
 
-app.set('views', __dirname + '/views')
-app.set('view engine', 'jade')
-app.use(express.logger('dev'))
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jade');
+app.use(express.logger('dev'));
 app.use(stylus.middleware(
   { src: __dirname + '/public'
   , compile: compile
   }
-))
-app.use(express.static(__dirname + '/public'))
+));
+app.use(express.static(__dirname + '/public'));
 
-var Toppings = require("./models/toppings")
-var Votes = require("./models/votes")
+
+var Toppings = require("./models/toppings");
+var Votes = require("./models/votes");
 
 // don't know how to migrate shit
 Toppings.remove(function(err, p){
@@ -65,16 +67,16 @@ app.get('/', function(req, res) {
     res.render('index',
     { title : 'Home',
       toppings : toppings }
-    )
+    );
   });
-})
+});
 
 app.post('/', function(req, res) {
   console.log('post');
-})
+});
 
 app.get('/generate', function(req, res) {
-  var key = randomstring.generate(7)
+  var key = randomstring.generate(7);
   new Votes({
     key: key
   });
@@ -89,8 +91,10 @@ app.get('/:key', function(req, res) {
     res.render('vote',
     { title : 'Create',
       toppings : toppings }
-    )
+    );
   });
 });
 
-app.listen(3000)
+app.listen(port, function() {
+	console.log("Listening on " + port);
+});
