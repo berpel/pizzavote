@@ -1,7 +1,7 @@
 /*
 * More details here http://mongoosejs.com/docs/guide.html
 */
-/*
+
 var mongoose = require("mongoose");
 
 //connect to database
@@ -16,4 +16,3 @@ var toppingsSchema = new mongoose.Schema({
 
 //compile schema to model
 module.exports = mongoose.model('toppings', toppingsSchema)
-*/
