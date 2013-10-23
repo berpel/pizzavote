@@ -2,14 +2,14 @@
  * Module dependencies
  */
 var express = require('express')
-  , mongoose = require('mongoose')
+  //, mongoose = require('mongoose')
   , stylus = require('stylus')
   , nib = require('nib')
   , randomstring = require("randomstring");
 
-var db = mongoose.connect('mongodb://localhost/pizzavote');
+//var db = mongoose.connect('mongodb://localhost/pizzavote');
 
-mongoose.connection.db.dropDatabase();
+//mongoose.connection.db.dropDatabase();
 
 var app = express();
 var port = process.env.PORT || 3000;

@@ -11,7 +11,6 @@
     "jade": "0.35.0",
     "stylus": "0.38.0",
     "nib": "1.0.1",
-    "mongoose":"3.6.20",
     "randomstring":"1.0.2"
   },
   "main": "app.js"
