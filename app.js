@@ -28,6 +28,7 @@ function compile(str, path) {
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(express.logger('dev'));
+app.use(express.bodyParser());
 app.use(stylus.middleware({ 
 	src: __dirname + '/public', 
 	compile: compile
@@ -46,7 +47,7 @@ app.get('/', function(req, res) {
 
 app.post('/', function(req, res) {
   console.log('post');
-  console.log(req);
+  console.log(req.body);
   res.send("");
 });
 
@@ -61,7 +62,7 @@ app.get('/generate', function(req, res) {
 
 app.get('/:key', function(req, res) {
   var query = votes.findOne({'key': req.params.id});
-  console.log(query);
+  //console.log(query);
     res.render('vote',
     { title : 'Create',
       toppings : toppings }

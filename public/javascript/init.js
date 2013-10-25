@@ -21,10 +21,10 @@ $(function(){
   });
 
   $('[data-target=post-results]').on('click', function(e) {
-	  //var mydata = $('#frm-vote').serialize();
-	  //console.log(mydata);
-	  var mydata = {};
-	  mydata.yourface = "hello";
+	  var mydata = $('#frm-vote').serialize();
+	  console.log(mydata);
+	  //var mydata = {};
+	  //mydata.yourface = "hello";
 	  $this = $(this);
 	  $.ajax({ 
           url: '/',
