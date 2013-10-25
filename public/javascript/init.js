@@ -1,4 +1,4 @@
-function goto(target) {
+function showsection(target) {
   $this = $('[name='+target+']');
   $this.removeClass('hidden');
   $('html,body').animate({
@@ -11,19 +11,39 @@ $(function(){
     $this = $(this);
     $.get('/generate', function(key) {
       $('#display-key').val('http://pza.io/'+key);
-      //console.log($(this).data('target'));
-      goto($this.data('target'));
+      showsection($this.data('target'));
     });
   });
 
   $('[data-target=vote]').on('click', function() {
     $this = $(this);
-    goto($this.data('target'));
+    showsection($this.data('target'));
   });
 
+  $('[data-target=post-results]').on('click', function(e) {
+	  //var mydata = $('#frm-vote').serialize();
+	  //console.log(mydata);
+	  var mydata = {};
+	  mydata.yourface = "hello";
+	  $this = $(this);
+	  $.ajax({ 
+          url: '/',
+          type: 'POST',
+          cache: false, 
+          data: mydata,
+          success: function(data){
+             alert('Success!');
+          }, 
+          error: function(jqXHR, textStatus, err){
+              alert('text status '+textStatus+', err '+err);
+          }
+       });
+	  e.preventDefault();
+    });     
+  
   $('[data-target=results]').on('click', function() {
     $this = $(this);
-    goto($this.data('target'));
+    showsection($this.data('target'));
   });
   
 });

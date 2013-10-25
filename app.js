@@ -46,7 +46,8 @@ app.get('/', function(req, res) {
 
 app.post('/', function(req, res) {
   console.log('post');
-  console.log(req.params);
+  console.log(req);
+  res.send("");
 });
 
 app.get('/generate', function(req, res) {
