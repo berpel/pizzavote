@@ -1,7 +1,4 @@
 mixin votes
-  - var styles = [{name: 'Supreme', type: 'preset'}, {name: 'Meat Lovers', type: 'preset'}, {name: 'Hawiian', type: 'preset'}]
-  - var toppings = [{name: 'Pepperoni', type: 'meat'}, {name: 'Sausage', type: 'meat'}, {name: 'Ham', type: 'meat'}]
-  - var vegetables = [{name: 'Onions', type: 'vegetable'}, {name: 'Black Olives', type: 'vegetable'}, {name: 'Mushrooms', type: 'vegetable'}, {name: 'Green Peppers', type: 'vegetable'}]
 
   p Congratulations! Someone is ordering you pizza! Please fillout the information below so you get exactly what you want.
 
@@ -22,25 +19,41 @@ mixin votes
   h3 Select what toppings you like and don't
   .toppings
     ul.list
-      - each topping in toppings
+      li
+        span Meats
+      - each meat in toppings.meats
         li
-          input(type='radio', name=topping.name, id=topping.name+'-yes', value=1).yes
-          input(type='radio', name=topping.name, id=topping.name+'-no', value=-1).no
-          label.yes(for=topping.name+'-yes')
+          input(type='radio', name=meat.c, id=meat.c+'-yes', value=1).yes
+          input(type='radio', name=meat.c, id=meat.c+'-no', value=-1).no
+          label.yes(for=meat.c+'-yes')
             i.icon-ok
-          label.no(for=topping.name+'-no')
+          label.no(for=meat.c+'-no')
             i.icon-remove
-          span=topping.name
+          span=meat.n
     ul.list
-      - each vegetable in vegetables
+      li
+        span Vegetables
+      - each vegetable in toppings.vegetables
         li
-          input(type='radio', name=vegetable.name, id=vegetable.name+'-yes', value=1).yes
-          input(type='radio', name=vegetable.name, id=vegetable.name+'-no', value=-1).no
-          label.yes(for=vegetable.name+'-yes')
+          input(type='radio', name=vegetable.c, id=vegetable.c+'-yes', value=1).yes
+          input(type='radio', name=vegetable.c, id=vegetable.c+'-no', value=-1).no
+          label.yes(for=vegetable.c+'-yes')
             i.icon-ok
-          label.no(for=vegetable.name+'-no')
+          label.no(for=vegetable.c+'-no')
             i.icon-remove
-          span=vegetable.name
+          span=vegetable.n
+    ul.list
+      li
+        span Specialty
+      - each specialty in toppings.specialty
+        li
+          input(type='radio', name=specialty.c, id=specialty.c+'-yes', value=1).yes
+          input(type='radio', name=specialty.c, id=specialty.c+'-no', value=-1).no
+          label.yes(for=specialty.c+'-yes')
+            i.icon-ok
+          label.no(for=specialty.c+'-no')
+            i.icon-remove
+          span=specialty.n
   h3 All done?
   .btns.next
     i.icon-share-alt.icon-flip-vertical
