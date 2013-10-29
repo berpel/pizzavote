@@ -9,7 +9,7 @@ var express = require('express')
   , votes = require("./models/votes");
 
 var db = mongoose.connect(process.env.MONGOLAB_URI || "mongodb://localhost/pizzavote");
-mongoose.connection.db.dropDatabase();
+//mongoose.connection.db.dropDatabase();
 
 var app = express();
 var port = process.env.PORT || 3000;
@@ -46,17 +46,63 @@ app.get('/', function(req, res) {
 });
 
 app.post('/', function(req, res) {
-  console.log('post');
+  var newvote = {};
+  newvote.toppingsYes = [];
+  newvote.toppingsNo = [];
+  
+  if(typeof req.body.urlId == "undefined"){
+	  res.send(500, "invalid urlId");  
+  }
+  else{
+	  myVotes = new votes.findOne({urlId:req.body.urlId});
+	 
+	  if(typeof myVotes == "undefined")
+		  res.send(500, "invalid urlId");
+	  
+	  console.log(myVotes.createDate);
+  }
+  
+  if(typeof req.body.slices == "undefined"){
+	  res.send(500, "number of slices is required");  
+  }
+  else{
+	  newvote.slices = req.body.slices;
+  }
+  for(var i=0; i<toppings.meats.length; i++){
+	  if(typeof req.body[toppings.meats[i].c] != "undefined"){
+		  if(req.body[toppings.meats[i].c] == 1)
+			  newvote.toppingsYes.push(toppings.meats[i].c);
+		  else if(req.body[toppings.meats[i].c] == -1)
+			  newvote.toppingsNo.push(toppings.meats[i].c);
+	  }
+  }
+  for(var i=0; i<toppings.vegetables.length; i++){
+	  if(typeof req.body[toppings.vegetables[i].c] != "undefined"){
+		  if(req.body[toppings.vegetables[i].c] == 1)
+			  newvote.toppingsYes.push(toppings.vegetables[i].c);
+		  else if(req.body[toppings.vegetables[i].c] == -1)
+			  newvote.toppingsNo.push(toppings.vegetables[i].c);
+	  }
+  }
+  for(var i=0; i<toppings.specialty.length; i++){
+	  if(typeof req.body[toppings.specialty[i].c] != "undefined" && req.body[toppings.specialty[i].c] == 1){
+		  for(var j=0; j<toppings.specialty[i].toppings.length;j++){
+			  if(typeof req.body[toppings.specialty[i].toppings[j]] == "undefined")
+				  newvote.toppingsYes.push(toppings.specialty[i].toppings[j]); 
+		  }
+	  }
+  }
   console.log(req.body);
-  res.send("");
+  console.log(newvote);
+  res.send(200,"");
 });
 
 app.get('/generate', function(req, res) {
   var key = randomstring.generate(7);
   new votes({
-    key: key
-  });
-  console.log(key);
+    urlId: key
+  }).save();
+  //console.log(key);
   res.send(key);
 });
 

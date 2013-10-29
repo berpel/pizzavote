@@ -3,15 +3,23 @@
 */
 
 var mongoose = require("mongoose");
+var Schema = mongoose.Schema;
 
-//connect to database
-//var db = mongoose.connect('mongodb://pizzavote:p1zz6v0t3@ds051848.mongolab.com:51848');
-
-//create schema for blog post
-var votesSchema = new mongoose.Schema({
-  key:  String,
-  date: { type: Date, default: Date.now }
+var votesSchema = new Schema({
+  urlId:  {type: String, index: true},
+  createDate: { type: Date, default: Date.now },
+  results: {
+	  totalSlices: Number,
+	  totalPies: Number
+  },
+  votes: [
+	{
+		slices: Number, 
+		toppingsYes: [String], 
+		toppingsNo: [String]
+	}
+  ]
 });
 
 //compile schema to model
-module.exports = mongoose.model('votes', votesSchema)
+module.exports = mongoose.model('votes', votesSchema);

@@ -11,6 +11,7 @@ $(function(){
     $this = $(this);
     $.get('/generate', function(key) {
       $('#display-key').val('http://pza.io/'+key);
+      $('#urlId').val(key);
       showsection($this.data('target'));
     });
   });
@@ -23,8 +24,6 @@ $(function(){
   $('[data-target=post-results]').on('click', function(e) {
 	  var mydata = $('#frm-vote').serialize();
 	  console.log(mydata);
-	  //var mydata = {};
-	  //mydata.yourface = "hello";
 	  $this = $(this);
 	  $.ajax({ 
           url: '/',
@@ -32,7 +31,7 @@ $(function(){
           cache: false, 
           data: mydata,
           success: function(data){
-             alert('Success!');
+            // alert('Success!');
           }, 
           error: function(jqXHR, textStatus, err){
               alert('text status '+textStatus+', err '+err);

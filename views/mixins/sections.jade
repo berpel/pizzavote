@@ -3,6 +3,7 @@ mixin votes
   p Congratulations! Someone is ordering you pizza! Please fillout the information below so you get exactly what you want.
 
   h3 How many slices are you going to eat?
+  input#urlId(type='hidden', name='urlId')
   .slices
     label
       input(type='radio', name='slices', value='1')
@@ -48,11 +49,8 @@ mixin votes
       - each specialty in toppings.specialty
         li
           input(type='radio', name=specialty.c, id=specialty.c+'-yes', value=1).yes
-          input(type='radio', name=specialty.c, id=specialty.c+'-no', value=-1).no
           label.yes(for=specialty.c+'-yes')
             i.icon-ok
-          label.no(for=specialty.c+'-no')
-            i.icon-remove
           span=specialty.n
   h3 All done?
   .btns.next
