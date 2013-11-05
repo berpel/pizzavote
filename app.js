@@ -29,8 +29,8 @@ app.set('view engine', 'jade');
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(stylus.middleware({ 
-	src: __dirname + '/public', 
-	compile: compile
+  src: __dirname + '/public', 
+  compile: compile
   })
 );
 app.use(express.static(__dirname + '/public'));
@@ -51,55 +51,54 @@ app.post('/', function(req, res) {
   newvote.toppingsNo = [];
   
   if(typeof req.body.urlId == "undefined"){
-	  res.send(500, "invalid urlId");  
+    res.send(500, "invalid urlId");  
   }
-  
- 
-  
   else{
-	  if(typeof req.body.slices == "undefined"){
-		  res.send(500, "number of slices is required");  
-	  }
-	  else{
-		  newvote.slices = req.body.slices;
-		  
-		  vote = votes.findOne({'urlId': req.body.urlId}).exec(function (err, result) {
-		  	  if (err) return handleError(err);
-		  	  if(result == null){
-		  		 res.send(500, "invalid urlId");
-		  	  }
-			  console.log(result);
-			  
-			  for(var i=0; i<toppings.meats.length; i++){
-				  if(typeof req.body[toppings.meats[i].c] != "undefined"){
-					  if(req.body[toppings.meats[i].c] == 1)
-						  newvote.toppingsYes.push(toppings.meats[i].c);
-					  else if(req.body[toppings.meats[i].c] == -1)
-						  newvote.toppingsNo.push(toppings.meats[i].c);
-				  }
-			  }
-			  for(var i=0; i<toppings.vegetables.length; i++){
-				  if(typeof req.body[toppings.vegetables[i].c] != "undefined"){
-					  if(req.body[toppings.vegetables[i].c] == 1)
-						  newvote.toppingsYes.push(toppings.vegetables[i].c);
-					  else if(req.body[toppings.vegetables[i].c] == -1)
-						  newvote.toppingsNo.push(toppings.vegetables[i].c);
-				  }
-			  }
-			  for(var i=0; i<toppings.specialty.length; i++){
-				  if(typeof req.body[toppings.specialty[i].c] != "undefined" && req.body[toppings.specialty[i].c] == 1){
-					  newvote.toppingsYes.push(toppings.specialty[i].c); 
-					  for(var j=0; j<toppings.specialty[i].toppings.length;j++){
-						  if(typeof req.body[toppings.specialty[i].toppings[j]] == "undefined")
-							  newvote.toppingsYes.push(toppings.specialty[i].toppings[j]); 
-					  }
-				  }
-			  }
-			  result.votes.push(newvote);
-			  console.log(result);
-			  result.save();
-		  });
-	  }
+    if(typeof req.body.slices == "undefined"){
+      res.send(500, "number of slices is required");  
+    }
+    else{
+      newvote.slices = req.body.slices;
+      
+      vote = votes.findOne({'urlId': req.body.urlId}).exec(function (err, result) {
+        if (err) return handleError(err);
+        if(result == null){
+          res.send(500, "invalid urlId");
+        }
+
+        for(var i=0; i<toppings.meats.length; i++){
+          if(typeof req.body[toppings.meats[i].c] != "undefined"){
+            if(req.body[toppings.meats[i].c] == 1)
+              newvote.toppingsYes.push(toppings.meats[i].c);
+            else if(req.body[toppings.meats[i].c] == -1)
+              newvote.toppingsNo.push(toppings.meats[i].c);
+          }
+        }
+        for(var i=0; i<toppings.vegetables.length; i++){
+          if(typeof req.body[toppings.vegetables[i].c] != "undefined"){
+            if(req.body[toppings.vegetables[i].c] == 1)
+              newvote.toppingsYes.push(toppings.vegetables[i].c);
+            else if(req.body[toppings.vegetables[i].c] == -1)
+              newvote.toppingsNo.push(toppings.vegetables[i].c);
+          }
+        }
+        for(var i=0; i<toppings.specialty.length; i++){
+          if(typeof req.body[toppings.specialty[i].c] != "undefined" && req.body[toppings.specialty[i].c] == 1){
+            newvote.toppingsYes.push(toppings.specialty[i].c); 
+            for(var j=0; j<toppings.specialty[i].toppings.length;j++){
+              if(typeof req.body[toppings.specialty[i].toppings[j]] == "undefined")
+                newvote.toppingsYes.push(toppings.specialty[i].toppings[j]); 
+            }
+          }
+        }
+        result.votes.push(newvote);
+        result.save(function(err, newvote) {
+          console.log('======= newly created _id =======');
+          console.log(newvote._id)
+        });
+        //console.log(_id);
+      });
+    }
   }
   
   res.send(200,"");
@@ -113,10 +112,10 @@ app.get('/generate', function(req, res) {
 });
 
 app.get('/:key', function(req, res) {
-	var query = votes.findOne({'urlId': req.params.id}).exec(function (err, result) {
-  	  if (err) return handleError(err);
-	  console.log(result);
-	});
+  var query = votes.findOne({'urlId': req.params.id}).exec(function (err, result) {
+      if (err) return handleError(err);
+    console.log(result);
+  });
     res.render('vote',
     { title : 'Create',
       toppings : toppings }
@@ -126,5 +125,5 @@ app.get('/:key', function(req, res) {
 });
 
 app.listen(port, function() {
-	console.log("Listening on " + port);
+  console.log("Listening on " + port);
 });

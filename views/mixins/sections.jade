@@ -49,13 +49,16 @@ mixin votes
       - each specialty in toppings.specialty
         li
           input(type='radio', name=specialty.c, id=specialty.c+'-yes', value=1).yes
+          input(type='radio', name=specialty.c, id=specialty.c+'-no', value=-1).no
           label.yes(for=specialty.c+'-yes')
             i.icon-ok
+          label.no(for=specialty.c+'-no')
+            i.icon-remove
           span=specialty.n
   h3 All done?
   .btns.next
     i.icon-share-alt.icon-flip-vertical
-    button.medium(data-target='post-results', type='button') Submit
+    button.medium(data-target='results', type='button') Submit
 
 mixin results
   h3 Results

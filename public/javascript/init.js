@@ -21,24 +21,25 @@ $(function(){
     showsection($this.data('target'));
   });
 
-  $('[data-target=post-results]').on('click', function(e) {
+  $('[data-target=results]').on('click', function(e) {
 	  var mydata = $('#frm-vote').serialize();
 	  console.log(mydata);
 	  $this = $(this);
 	  $.ajax({ 
-          url: '/',
-          type: 'POST',
-          cache: false, 
-          data: mydata,
-          success: function(data){
-            // alert('Success!');
-          }, 
-          error: function(jqXHR, textStatus, err){
-              alert('text status '+textStatus+', err '+err);
-          }
-       });
+      url: '/',
+      type: 'POST',
+      cache: false, 
+      data: mydata,
+      success: function(data){
+        //alert('Success!');
+        showsection($this.data('target'));
+      }, 
+      error: function(jqXHR, textStatus, err){
+        alert('text status '+textStatus+', err '+err);
+      }
+    });
 	  e.preventDefault();
-    });     
+  });     
   
   $('[data-target=results]').on('click', function() {
     $this = $(this);
