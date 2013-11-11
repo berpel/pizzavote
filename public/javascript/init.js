@@ -23,8 +23,9 @@ $(function(){
 
   $('[data-target=results]').on('click', function(e) {
 	  var mydata = $('#frm-vote').serialize();
-	  console.log(mydata);
+	  console.log($('#urlId').val());
 	  $this = $(this);
+    store.set($('#urlId').val(), mydata);
 	  $.ajax({ 
       url: '/',
       type: 'POST',
@@ -45,5 +46,21 @@ $(function(){
     $this = $(this);
     showsection($this.data('target'));
   });
+
+  if ($('#frm-vote').length > 0) {
+    data = store.get(location.pathname.split('/')[1]);
+    toppings = data.split('&');
+    for (i in toppings) {
+      input = toppings[i].split('=')[0];
+      value = toppings[i].split('=')[1];
+      console.log(input);
+      if (input == 'slices') {
+        $("input[name=slices][value=" + value + "]").prop('checked', true);
+      } else {
+        $('#'+input+'-'+(value==1?'yes':'no')).prop('checked', true);
+      }
+    }
+
+  }
   
 });

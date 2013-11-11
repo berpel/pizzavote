@@ -112,12 +112,14 @@ app.get('/generate', function(req, res) {
 });
 
 app.get('/:key', function(req, res) {
-  var query = votes.findOne({'urlId': req.params.id}).exec(function (err, result) {
+  var query = votes.findOne({'urlId': req.params.key}).exec(function (err, result) {
       if (err) return handleError(err);
     console.log(result);
   });
+    console.log(req.params.key);
     res.render('vote',
     { title : 'Create',
+      urlId: req.params.key,
       toppings : toppings }
     );
     
