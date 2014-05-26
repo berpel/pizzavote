@@ -1,4 +1,0 @@
-pizzavote
-=========
-
-vote for pizza!
