@@ -1,5 +1,12 @@
 .DS_Store
-.project
-.env
-/node_modules
-.idea/*
+.nodemonignore
+.sass-cache/
+.bower-*/
+.idea/
+node_modules/
+public/system/lib
+mean.iml
+test/coverage/
+modules/public/
+modules/views/
+/public/build/
